@@ -1,0 +1,280 @@
+@import "compass/css3/box-shadow";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "compass/css3/appearance";
+@import "compass/css3/images";
+
+* {
+    font-family: 'Josefin Slab', serif;
+    font-size: 18px;
+}
+body {
+    background: white;
+}
+
+/*FLIPPING CARD*/
+.container {
+    @include perspective(400px);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    width: 250px;
+    height: 200px;
+
+    &.flipanim .flip-container {
+        @include transform(rotate3d(0,1,0,180deg));
+    }
+    .front-card, .back-card {
+        width: 250px;
+        height: 200px;
+        @include backface-visibility(hidden);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+        border: 1px solid #E3E3E3;
+    }
+    .front-card {
+        z-index: 1;
+        @include box-shadow(0px 4px 8px 0px rgba(0,0,0,0.50), inset 0px 2px 2px 0px #FFFFFF);
+        @include background-image(linear-gradient(-90deg, #F9F9F9 0%, #F9F9F9 23%, #F9F9F9 46%, #F4F4F4 74%, #F0F0F0 100%));
+    }
+    .back-card {
+        z-index: 2;
+        @include transform(rotate3d(0,1,0,180deg));
+        @include background-image(linear-gradient(-90deg, #E8E8E8 0%, #E1E1E1 23%, #DEDEDE 46%, #D9D9D9 74%, #D5D5D5 100%));
+        @include box-shadow(0px 4px 8px 0px rgba(0,0,0,0.50), inset 0px 2px 2px 0px #EBEBEB);
+    }
+    &.close .flip-container {
+        -webkit-animation-name: close;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-name: close;
+        -moz-animation-duration: 2s;
+        -moz-animation-fill-mode: forwards;
+        -o-animation-name: close;
+        -o-animation-duration: 2s;
+        -o-animation-fill-mode: forwards;
+        animation-name: close;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+    &.enter .flip-container {
+        -webkit-animation-name: enter;
+        -webkit-animation-fill-mode:both;
+        -webkit-animation-duration:1s;
+        -moz-animation-name: enter;
+        -moz-animation-fill-mode:both;
+        -moz-animation-duration:1s;
+        -o-animation-name: enter;
+        -o-animation-fill-mode:both;
+        -o-animation-duration:1s;
+        animation-name: enter;
+        animation-fill-mode:both;
+        animation-duration:1s;
+    }
+}
+
+.flip-container {
+    @include transition(all 0.8s ease-out);
+    @include transform-style(preserve-3d);
+    position: relative;
+}
+
+///////////////////////////////////////////////////////////
+/* ANIMATIONS */
+@-webkit-keyframes close {
+    0% { -webkit-transform: rotate(0); -webkit-transform-origin: top left; -webkit-animation-timing-function: ease-in-out; }
+    20%, 60% { -webkit-transform: rotate(80deg); -webkit-transform-origin: top left; -webkit-animation-timing-function: ease-in-out; }
+    40% { -webkit-transform: rotate(60deg); -webkit-transform-origin: top left; -webkit-animation-timing-function: ease-in-out; }
+    80% { -webkit-transform: rotate(60deg) translateY(0); opacity: 1; -webkit-transform-origin: top left; -webkit-animation-timing-function: ease-in-out; }
+    100% { -webkit-transform: translateY(700px); opacity: 0; }
+}
+@-moz-keyframes close {
+    0% { -moz-transform: rotate(0); -moz-transform-origin: top left; -moz-animation-timing-function: ease-in-out; }
+    20%, 60% { -moz-transform: rotate(80deg); -moz-transform-origin: top left; -moz-animation-timing-function: ease-in-out; }
+    40% { -moz-transform: rotate(60deg); -moz-transform-origin: top left; -moz-animation-timing-function: ease-in-out; }
+    80% { -moz-transform: rotate(60deg) translateY(0); opacity: 1; -moz-transform-origin: top left; -moz-animation-timing-function: ease-in-out; }
+    100% { -moz-transform: translateY(700px); opacity: 0; }
+}
+@-o-keyframes close {
+    0% { -o-transform: rotate(0); -o-transform-origin: top left; -o-animation-timing-function: ease-in-out; }
+    20%, 60% { -o-transform: rotate(80deg); -o-transform-origin: top left; -o-animation-timing-function: ease-in-out; }
+    40% { -o-transform: rotate(60deg); -o-transform-origin: top left; -o-animation-timing-function: ease-in-out; }
+    80% { -o-transform: rotate(60deg) translateY(0); opacity: 1; -o-transform-origin: top left; -o-animation-timing-function: ease-in-out; }
+    100% { -o-transform: translateY(700px); opacity: 0; }
+}
+@keyframes close {
+    0% { transform: rotate(0); transform-origin: top left; animation-timing-function: ease-in-out; }
+    20%, 60% { transform: rotate(80deg); transform-origin: top left; animation-timing-function: ease-in-out; }
+    40% { transform: rotate(60deg); transform-origin: top left; animation-timing-function: ease-in-out; }
+    80% { transform: rotate(60deg) translateY(0); opacity: 1; transform-origin: top left; animation-timing-function: ease-in-out; }
+    100% { transform: translateY(700px); opacity: 0; }
+}
+
+
+@-webkit-keyframes enter {
+    0% { opacity: 0; -webkit-transform: translateY(-2000px);}
+    60% { opacity: 1; -webkit-transform: translateY(30px);}
+    80% { -webkit-transform: translateY(-10px);}
+    100% {-webkit-transform: translateY(0);}
+}
+@-moz-keyframes enter {
+    0% { opacity: 0; -moz-transform: translateY(-2000px);}
+    60% { opacity: 1; -moz-transform: translateY(30px);}
+    80% { -moz-transform: translateY(-10px);}
+    100% {-moz-transform: translateY(0);}
+}
+@-o-keyframes enter {
+    0% { opacity: 0; -o-transform: translateY(-2000px);}
+    60% { opacity: 1; -o-transform: translateY(30px);}
+    80% { -o-transform: translateY(-10px);}
+    100% {-o-transform: translateY(0);}
+}
+@keyframes enter {
+    0% { opacity: 0; transform: translateY(-2000px);}
+    60% { opacity: 1; transform: translateY(30px);}
+    80% { transform: translateY(-10px);}
+    100% {transform: translateY(0);}
+}
+///////////////////////////////////////////////////////////
+
+/*FRONT CARD STYLES*/
+.front-card-content {
+    text-align: center;
+    color: #353535;
+}
+.name {
+    font: {
+        size: 22px;
+        weight: 700;
+    }
+}
+
+/*FLIP BUTTON*/
+.flip-button {
+    display: block;
+    position: absolute;
+    top: 150px;
+    left: 81px;
+    @include appearance(push-button);
+    border-radius: 20px;
+    @include background-image(linear-gradient(-90deg, #7C7C7C 0%, #5E5E5E 52%, #777777 100%));
+    border: 1px solid #575757;
+    outline: none;
+    font-family: 'Lucida Grande';
+    font-size: 12px;
+    color: #FFF;
+    padding: 4px 12px;
+
+    &:hover {
+        @include background-image(linear-gradient(-90deg, #303030 0%, #3D3D3D 52%, #3E3E3E 100%));
+    }
+}
+
+/*CLOSE BUTTON*/
+.close-button {
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    width: 20px;
+
+    > div {
+        width: 12px;
+        height: 2px;
+        border-radius: 2px;
+        background: #C0C0C0;
+    }
+    &:hover > div {
+        background: #303030;
+    }
+    .close-line-1 {
+        @include transform(rotate(45deg) translate(75%, 150%));
+    }
+    .close-line-2 {
+        @include transform(rotate(135deg) translate(15%, -375%));
+    }
+}
+
+/*BACK CARD STYLES*/
+.back-card-content {
+    > a {
+       text-decoration: none;
+       margin-left: 60px;
+       font-weight: 700;
+       line-height: 50px;
+       display: block;
+    }
+    span {
+       margin-left: 5px;
+       position: relative;
+       top: 4px;
+       color: #4F4F4F;
+    }
+    > a:hover .icon-path {
+        fill: #282828;
+    }
+    > a:hover span {
+        color: #282828;
+    }
+}
+
+/*SVG ICON*/
+.icon {
+    height: 31px;
+    width: 31px;
+    vertical-align: middle;
+}
+.icon-path {
+    stroke: none;
+    fill: #4F4F4F;
+}
+
+/*BACK BUTTON*/
+.back-button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    top: 5px;
+    height: 15px;
+    width: 15px;
+
+    > div {
+        height: 2px;
+        border-radius: 2px;
+        background: #A4A4A4;
+    }
+    &:hover > div {
+        background: #303030;
+    }
+    .back-line-1 {
+        width: 12px;
+        @include transform(translate(0%, 180%));
+    }
+    .back-line-2 {
+        width: 8px;
+        @include transform(rotate(-45deg) translate(5%,-50%));
+    }
+    .back-line-3 {
+        width: 8px;
+        @include transform(rotate(45deg) translate(20%, 90%));
+    }
+}
+
+/*SHADOW STYLES*/
+.shadow {
+    display: block;
+    width: 300px;
+    margin: 10px auto;
+    @include box-shadow(0px 0px 40px 1px rgba(0,0,0,0.15));
+    @include transition(all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55));
+
+    &.visible {
+        @include box-shadow(0px 20px 100px 25px rgba(0,0,0,0.35));
+    }
+    &.out {
+        @include box-shadow(-150px 20px 100px 25px rgba(0,0,0,0.30));
+        width: 80px;
+    }
+}

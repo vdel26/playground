@@ -1,0 +1,33 @@
+body {
+  font-family: "Helvetica Neue", Helvetica;
+  width: 90%;
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin: 0;
+  color: rgb(25, 25, 25);
+}
+.container {
+  margin: 0 auto;
+  padding: 0 1em;
+  width: 900px;
+  height: 400px;
+  background: rgb(234, 235, 235);
+}
+.chip {
+  position: relative;
+  border-radius: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  float: left;
+  will-change: transform;
+}
+.chip:nth-child(1) {
+  background-color: #ABC;
+}
+.chip:nth-child(2) {
+  background-color: #FA9;
+}
+.chip:nth-child(3) {
+  background-color: #01A;
+}

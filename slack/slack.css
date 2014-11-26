@@ -1,0 +1,47 @@
+.logo {
+  position: relative;
+  height: 90px;
+  width: 90px;
+  margin-top: 50px;
+  margin-left: 100px;
+  /* background: rgba(0, 0, 0, 0.2); */
+  -webkit-transform: rotateZ(-10deg);
+          transform: rotateZ(-10deg);
+  -webkit-backface-visibility: hidden   /* fix Chrome bug http://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome */
+}
+#animate-me {
+  margin-left: 100px;
+}
+.line {
+  position: absolute;
+  height: 15px;
+  width: 90px;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+.blue {
+  background-color: #44ccdf;
+  top: 18px;
+}
+.pink {
+  background-color: #f70056;
+  top: 56px;
+}
+.green {
+  background-color: #00c093;
+  left: 30px;
+  -webkit-transform-origin: top left;
+      -ms-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+}
+.yellow {
+  background-color: #f3a800;
+  left: 75px;
+  -webkit-transform-origin: top left;
+      -ms-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+}

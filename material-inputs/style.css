@@ -1,0 +1,45 @@
+:root {
+  font-size: 0.9em;
+  font-family: "helvetica neue";
+}
+.input-outer-container {
+  position: relative;
+  height: 50px;
+}
+.input-label {
+  z-index: 2;
+  position: absolute;
+  bottom: 9px;
+  -webkit-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transform-origin: 0 0;
+  color: #757575;
+}
+.input-label.is-minimized {
+  -webkit-transform: scale(0.7) translateY(-30px);
+  -webkit-transform-origin: 0 0;
+  color: rgb(0, 0, 0);
+}
+.input-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 170px;
+  border-bottom: 1px solid black;
+}
+.input-wrapper > input {
+  z-index: 1;
+  width: 100%;
+  border: 0;
+  padding: 8px 0;
+  margin: 0;
+  outline: 0;
+  font-family: "helvetica neue";
+  font-size: 100%
+  /*background-color: rgba(200, 200, 200, 0.5);*/
+}
+.input-wrapper.is-invalid {
+  border-bottom: 2px solid red !important;
+}
+.input-wrapper.is-focused {
+  border-bottom: 2px solid blue;
+}

@@ -57,6 +57,7 @@
     },
 
     animate: function () {
+      if (document.querySelector('.velocity-animating')) return;
       Velocity.RunSequence(this.blueSequence);
       Velocity.RunSequence(this.pinkSequence);
       Velocity.RunSequence(this.yellowSequence);

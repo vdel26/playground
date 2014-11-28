@@ -21,14 +21,15 @@
         { elements: self.blue, properties: { width: 15 }, options: { duration: 500 } },
         { elements: self.blue, properties: { translateX: 75 }, options: { duration: 500 } },
         { elements: self.blue, properties: { right: 0, translateX: 0 }, options: { duration: 0 } },
-        { elements: self.blue, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self, 'blue') } }
+        { elements: self.blue, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self.blue) } }
       ];
+
       this.pinkSequence = [
         { elements: self.pink, properties: { right: 0 }, options: { duration: 0 } },
         { elements: self.pink, properties: { width: 15 }, options: { duration: 500 } },
         { elements: self.pink, properties: { translateX: -75 }, options: { duration: 500 } },
         { elements: self.pink, properties: { left: 0, translateX: 0 }, options: { duration: 0 } },
-        { elements: self.pink, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self, 'pink') } }
+        { elements: self.pink, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self.pink) } }
       ];
 
       this.yellowSequence = [
@@ -36,8 +37,7 @@
         { elements: self.yellow, properties: { width: 15 }, options: { duration: 500 } },
         { elements: self.yellow, properties: { translateX: 60 }, options: { duration: 500 } },
         { elements: self.yellow, properties: { bottom: 0, translateX: -75, translateY: 0, rotateZ: -90 }, options: { duration: 0 } },
-        { elements: self.yellow, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self, 'yellow') } }
-
+        { elements: self.yellow, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self.yellow) } }
       ];
 
       this.greenSequence = [
@@ -45,7 +45,7 @@
         { elements: self.green, properties: { width: 15 }, options: { duration: 500 } },
         { elements: self.green, properties: { translateX: 60 }, options: { duration: 500 } },
         { elements: self.green, properties: { top: 0, translateX: 0, translateY: 0, rotateZ: 90 }, options: { duration: 0 } },
-        { elements: self.green, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self, 'green')} }
+        { elements: self.green, properties: { width: 90 }, options: { duration: 500, complete: self.repeat.bind(self.green)} }
       ];
 
       this.button.addEventListener('click', function () { self.animate(); });
@@ -64,8 +64,9 @@
     },
 
     repeat: function (elem) {
-      var self = this;
-      self[elem].style.cssText = "";
+      this.style.cssText = "";
+      // var self = this;
+      // self[elem].style.cssText = "";
       // requestAnimationFrame(function () {
       //   Velocity.RunSequence(self[elem + 'Sequence']);
       // });

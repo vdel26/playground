@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
     watch: {
       all: {
-        files: ['*.css', '*.html', '*.js'],
+        files: ['**/*.css', '**/*.html', '**/*.js'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }

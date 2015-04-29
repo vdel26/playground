@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     autoprefixer: {
       css: {
-        src: '*/*.css'
+        src: '*/**/*.css'
       }
     },
 

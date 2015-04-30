@@ -12,9 +12,17 @@ a:hover {
 }
 ul {
   margin: 100px;
+  padding: 0;
   text-align: center;
   list-style: none;
 }
 li {
   margin-top: 0.6em;
+}
+.me {
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
+  -webkit-transition: .3s all linear;
+          transition: .3s all linear;
 }
